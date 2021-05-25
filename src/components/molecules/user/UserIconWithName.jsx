@@ -1,10 +1,14 @@
-import { useContext } from "react";
+// import { useContext } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { UserContext } from "../../../providers/UserProvider";
+// import { UserContext } from "../../../providers/UserProvider";
+import { userState } from "../../../store/userState";
 
 export const UserIconWithName = (props) => {
   const { image, name } = props;
-  const { userInfo } = useContext(UserContext);
+  // const { userInfo } = useContext(UserContext);
+  const userInfo = useRecoilValue(userState);
+  console.log(userInfo);
   //userInfoに値が存在しないならfalse,あればその中のisAdminを返す三項演算子
   const isAdmin = userInfo ? userInfo.isAdmin : false;
   return (
