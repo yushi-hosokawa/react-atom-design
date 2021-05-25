@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../../../providers/UserProvider";
+
 export const UserIconWithName = (props) => {
-  const { image, name, isAdmin } = props;
-  console.log(`UserIconWithName:${isAdmin}`);
+  const { image, name } = props;
+  const { userInfo } = useContext(UserContext);
+  //userInfoに値が存在しないならfalse,あればその中のisAdminを返す三項演算子
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
   return (
     <SContainer>
       <SImage height={160} width={160} src={image} alt={name} />

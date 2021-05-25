@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
@@ -18,17 +17,13 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
-  const { state } = useLocation();
-  //isAdiminに値が無ければfalseになるように三項演算子で指定
-  const isAdmin = state ? state.isAdmin : false;
-  console.log(`users:${isAdmin}`);
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
       <SUserArea>
         {users.map((user) => {
-          return <UserCard key={user.id} user={user} isAdmin={isAdmin} />;
+          return <UserCard key={user.id} user={user} />;
         })}
       </SUserArea>
     </SContainer>
